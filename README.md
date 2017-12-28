@@ -8,7 +8,7 @@ Login via ​Starladder​ ​OAuth2​ ​provider.
 ### Getting Started
 
 * Ruby 2.4.0
-* Rails 5.0.2
+* Rails 5.1.4
 * PostgreSQL
 
 `git clone git@github.com:DenKap/tournament.git`
