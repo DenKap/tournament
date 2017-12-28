@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Tournaments</h1>
+
+  </div>
+  <div class="row">
+    <% if @tourneys.present? %>
+      <% @tourneys.each do |tourney| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h3><%=tourney.name %></h3>
+            <p class="party-count">Participants: <%=tourney.participants.count %></p>
+            <p class="party"><%= link_to participant_path(tourney), class: 'btn btn-default' do %>
+              Show all participants
+            <% end %></p>
+          </div>
+          <div class="caption">
+            <% if @current_user && @current_user.user_team_joined?(tourney) == true %>
+              <%= link_to leave_tourney_path(tourney), method: :delete, data: { confirm: 'Are you sure you want to leave this tournament' }, class: 'btn btn-danger btn' do %>
+                Leave Tournament
+              <% end %>
+            <% elsif @current_user && @current_user.has_team? %>
+              <%= link_to join_tourney_path(tourney), method: :post, class: 'btn btn-success' do %>
+                Join Tournament
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h4>There are no Tournaments yet.</h4>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class=".col-md-4"><%=will_paginate @teams, :renderer => BootstrapPagination::Rails %></div>
+    </div>
+  </div>
+</div>

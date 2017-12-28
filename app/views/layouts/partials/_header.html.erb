@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header pull-left">
+      <a class="btn btn-success navbar-btn" href='/'>Home</a>
+      <a class="btn btn-success navbar-btn" href='/tourneys'>Tournaments</a>
+    </div>
+    <div class="navbar-header pull-right">
+      <% if @current_user %>
+        <p class="navbar-text">Signed in as <strong><%=@current_user.nick %></strong></p>
+        <a class="btn btn-default navbar-btn" href='/signout'>Logout</a>
+      <% else %>
+        <a class="btn btn-default navbar-btn" href='auth/starladder'>Sign in</a>
+      <% end %>
+    </div>
+  </div>
+</nav>

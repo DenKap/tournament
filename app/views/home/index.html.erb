@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Teams</h1>
+    <% if @current_user && @current_user.has_team? == false %>
+      <%= link_to new_team_path, class: 'btn btn-default' do %>
+        Add Team
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% if @teams.present? %>
+      <% @teams.each do |team| %>
+        <div class="col-md-4">
+          <div class="caption">
+            <p><%= team.created_at.strftime("%d %B %Y %H:%M") %></p>
+            <h3><%= team.name %></h3>
+            <p>Owner: <%=team.owner %></p>
+            <p><% if team.logo? %>
+              <%= image_tag team.logo.url(:thumb), class: "rounded-img" %>
+            <% else %>
+              <%= image_tag 'missing.png', style: 'width:100px; height:100px;', class: "rounded-img" %>
+            <% end %></p>
+          </div>
+          <div class="caption">
+            <% if @current_user && @current_user.id == team.team_owner_id %>
+              <%= link_to edit_team_path(team), class: 'btn btn-default' do %>
+                Edit Team
+              <% end %>
+              <%= link_to team_path(team), method: :delete, data: { confirm: 'Are you sure you want to delete this team' }, class: 'btn btn-danger btn-sm' do %>
+                Delete Team
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h4>There are no Teams yet.</h4>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class=".col-md-4"><%=will_paginate @teams, :renderer => BootstrapPagination::Rails %></div>
+    </div>
+  </div>
+</div>

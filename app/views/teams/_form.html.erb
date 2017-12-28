@@ -1,0 +1,25 @@
+<div class="container">
+  <%= render partial: 'layouts/partials/form_error_messages', locals: { object: @team } %>
+
+  <div class="centered-wide-form">
+    <h3>*Team Name:</h3>
+    <p class="label"><%=f.label :name, 'Enter Team Name here:' %></p>
+    <p><%=f.text_field :name %></p>
+
+    <h3>Team Logo:</h3>
+      <% if @team.logo.present? %>
+        <p class="label">Current Logo:</p>
+        <div>
+          <%= image_tag @team.logo.url(:original), class: "rounded-img" %>
+        </div>
+      <% end %>
+    <p class="label"><%=f.label :logo, 'Attach Team Logo:' %></p>
+    <div class="input-group" style="width: 500px; text-align: center;">
+      <span class="input-group-btn">
+        <span class="btn btn-small btn-primary btn-inverse" onclick="$(this).parent().find('input[type=file]').click();">Browse</span>
+          <%=f.file_field :logo, id: nil, autofocus: true, class: "form-control" , onchange: "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", style: "display: none;" %>
+      </span>
+      <span class="form-control" style="width: 125%;"></span>
+    </div>
+  </div>
+</div>

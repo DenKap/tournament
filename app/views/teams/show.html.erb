@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="page-header">
+      <h1>Team: <%=@team.name %></h1>
+    </div>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <p><%=@team.created_at.strftime("%d %B %Y %H:%M") %></p>
+            <p>Owner: <%=@team.owner %></p>
+            <% if @team.logo? %>
+              <%= image_tag @team.logo.url(:original), style: :thumb, class: "rounded-img" %>
+            <% else %>
+              <%= image_tag '/missing.png', style: 'width:100px; height:100px;', class: "rounded-img" %>
+            <% end %>
+        </div>
+      </div>				
+  	</div>
+  </div>
+</div>

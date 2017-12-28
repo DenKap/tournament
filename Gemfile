@@ -12,8 +12,6 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -32,21 +30,28 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'figaro'
+gem 'jquery-rails'
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'paperclip', '~> 5.0.0'
+gem 'paperclip-compression'
+gem 'sass-rails', '>= 3.2'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'rubocop'
-  gem 'rspec-rails', '~> 3.5'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'shoulda-matchers', '~> 3.1'
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'rails-erd'
+  gem 'rubocop'
   gem 'selenium-webdriver'
 end
 
@@ -59,8 +64,8 @@ end
 
 group :development do
   gem 'capistrano', '~> 3.4'
-  gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
 end
@@ -68,6 +73,5 @@ end
 group :production do
   gem 'puma', '~> 3.7'
 end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
