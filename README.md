@@ -1,24 +1,42 @@
-# README
+<a href="https://codeclimate.com/github/DenKap/tournament/maintainability"><img src="https://api.codeclimate.com/v1/badges/ffcb66367dcc7640f240/maintainability" /></a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tournament
 
-Things you may want to cover:
+App that allows users to register their teams in tournaments.
+Login via ​Starladder​ ​OAuth2​ ​provider.
 
-* Ruby version
+### Getting Started
 
-* System dependencies
+* Ruby 2.4.0
+* Rails 5.0.2
+* PostgreSQL
 
-* Configuration
+`git clone git@github.com:DenKap/tournament.git`
 
-* Database creation
+`cd <tournament_directory>`
 
-* Database initialization
+`bundle install`
 
-* How to run the test suite
+(.ruby-gemset and .ruby-version are included)
 
-* Services (job queues, cache servers, search engines, etc.)
+`rails db:create`
 
-* Deployment instructions
+`rails db:migrate`
 
-* ...
+Don't forget to run:
+
+`rails db:seed`
+
+Than `rails s` and go to
+
+`http://127.0.0.1:3000/` in your browser
+
+### Specs
+
+All specs implemented with RSpec and could be run using `rspec` command inside project folder.
+To install `rspec` please run `bundle install` inside project folder.
+
+### Deployment
+
+Deployment with Capistrano.
+See and add your credentials to `/config/deploy.rb`, `/config/deploy/production.rb`
